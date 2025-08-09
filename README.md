@@ -110,7 +110,19 @@ The results will be saved in`proj_log/WHUCAD/lgan_1000/results` by default.
 
 ## Visualization and Export
 
-We provide scripts to visualize CAD models in CATIA software.
+We provide an online website to visualize CAD models.
+
+[http://whucad.l2.bb1a.cn/](http://whucad.l2.bb1a.cn/)
+
+Through the above web interface (without the need to install industrial CAD software), WHUCAD vector files in `.h5` format can be processed. These may include vectors from the WHUCAD dataset itself, or vectors predicted/generated/reconstructed by AI systems based on WHUCAD vectors through relevant vector computation—for example, new vectors generated via GAN or Diffusion networks.
+
+Three representative types of geometric models are supported (CAD / CAE / Visualization):
+
+* **stp (Brep)** – CAD geometric models in boundary representation (B-rep) format.
+* **stl (Mesh)** – Visualization geometric models in mesh representation.
+* **icem (ICEM)** – Pre-processing geometric models compatible with CAE software such as Ansys.
+
+This service is intended for academic research purposes only and is not for commercial use.
 
 ## Acknowledgement
 
