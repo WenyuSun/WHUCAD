@@ -15,14 +15,14 @@
 每个CAD模型都被表示为一个序列的向量，形状为 `(seq_len, 1 + N_ARGS)`，其中：
 - `seq_len`: 序列长度（最大为 MAX_TOTAL_LEN = 100）
 - 第一列（索引0）: **命令类型** (command)
-- 后续列（索引1-28）: **命令参数** (arguments)，总共 N_ARGS = 28 个参数
+- 后续列（索引1-32）: **命令参数** (arguments)，总共 N_ARGS = 32 个参数
 
 #### 2. 参数分组结构
 
-28个参数被分为4组：
+32个参数被分为4组：
 
 ```python
-N_ARGS = 28 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_PARAM
+N_ARGS = 32 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_PARAM
 ```
 
 详细分解：
@@ -36,7 +36,7 @@ N_ARGS = 28 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_P
 
 #### 3. 向量位置详细说明
 
-每个向量包含29个值，具体含义如下：
+每个向量包含33个值，具体含义如下：
 
 | 位置索引 | 参数分组 | 参数名称 | 描述 |
 |---------|---------|---------|------|
@@ -74,7 +74,7 @@ N_ARGS = 28 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_P
 | **31** | SELECT_PARAM | body_no | 实体编号 |
 | **32** | SELECT_PARAM | no | 选择编号 |
 
-**注意**：实际向量索引从0开始，因此参数从索引1开始到索引28结束（共28个参数）。
+**注意**：实际向量索引从0开始，因此参数从索引1开始到索引32结束（共32个参数）。
 
 #### 4. 命令类型列表
 
@@ -159,7 +159,7 @@ N_ARGS = 28 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_P
 
 - 格式：HDF5 (.h5)
 - 数据集名称：`"vec"`
-- 形状：`(seq_len, 1 + N_ARGS)` = `(seq_len, 29)`
+- 形状：`(seq_len, 1 + N_ARGS)` = `(seq_len, 33)`
 - 数据类型：整数（int）
 
 ---
@@ -175,14 +175,14 @@ This document provides a detailed explanation of the meaning of each position in
 Each CAD model is represented as a sequence of vectors with shape `(seq_len, 1 + N_ARGS)`, where:
 - `seq_len`: Sequence length (maximum MAX_TOTAL_LEN = 100)
 - First column (index 0): **Command type**
-- Subsequent columns (indices 1-28): **Command arguments**, total N_ARGS = 28 parameters
+- Subsequent columns (indices 1-32): **Command arguments**, total N_ARGS = 32 parameters
 
 #### 2. Parameter Group Structure
 
-The 28 parameters are divided into 4 groups:
+The 32 parameters are divided into 4 groups:
 
 ```python
-N_ARGS = 28 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_PARAM
+N_ARGS = 32 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_PARAM
 ```
 
 Breakdown:
@@ -196,7 +196,7 @@ Breakdown:
 
 #### 3. Detailed Vector Position Explanation
 
-Each vector contains 29 values with the following meanings:
+Each vector contains 33 values with the following meanings:
 
 | Index | Parameter Group | Parameter Name | Description |
 |-------|----------------|----------------|-------------|
@@ -234,7 +234,7 @@ Each vector contains 29 values with the following meanings:
 | **31** | SELECT_PARAM | body_no | Body number |
 | **32** | SELECT_PARAM | no | Selection number |
 
-**Note**: Actual vector indices start from 0, so parameters range from index 1 to index 28 (28 parameters total).
+**Note**: Actual vector indices start from 0, so parameters range from index 1 to index 32 (32 parameters total).
 
 #### 4. Command Type List
 
@@ -319,7 +319,7 @@ A typical CAD model sequence might look like:
 
 - Format: HDF5 (.h5)
 - Dataset name: `"vec"`
-- Shape: `(seq_len, 1 + N_ARGS)` = `(seq_len, 29)`
+- Shape: `(seq_len, 1 + N_ARGS)` = `(seq_len, 33)`
 - Data type: Integer (int)
 
 ---
