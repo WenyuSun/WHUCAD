@@ -17,6 +17,8 @@
 - 第一列（索引0）: **命令类型** (command)
 - 后续列（索引1-32）: **命令参数** (arguments)，总共 N_ARGS = 32 个参数
 
+因此，每个向量的总长度为 1 + 32 = 33。
+
 #### 2. 参数分组结构
 
 32个参数被分为4组：
@@ -78,7 +80,7 @@ N_ARGS = 32 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_P
 
 #### 4. 命令类型列表
 
-共有27种命令类型（索引0-26）：
+共有27种命令类型（索引从0到26，共27个）：
 
 ##### 草图命令（Sketch Commands, 0-4）
 - **0: Line** - 直线
@@ -118,7 +120,7 @@ N_ARGS = 32 = N_ARGS_SKETCH + N_ARGS_EXT + N_ARGS_FINISH_PARAM + N_ARGS_SELECT_P
 - **15: Mirror** - 镜像
   - 使用参数：无
 - **16: Hole** - 孔
-  - 使用参数：x(1), y(2), 平面参数(6-11), hole_r(26), hole_depth(27), hole_type(28)
+  - 使用参数：x(1), y(2), 平面参数(6-11) [6个坐标系参数], hole_r(26), hole_depth(27), hole_type(28)
 
 ##### 辅助命令（Auxiliary Commands, 17-26）
 - **17: Topo** - 拓扑标记
@@ -176,6 +178,8 @@ Each CAD model is represented as a sequence of vectors with shape `(seq_len, 1 +
 - `seq_len`: Sequence length (maximum MAX_TOTAL_LEN = 100)
 - First column (index 0): **Command type**
 - Subsequent columns (indices 1-32): **Command arguments**, total N_ARGS = 32 parameters
+
+Therefore, each vector has a total length of 1 + 32 = 33.
 
 #### 2. Parameter Group Structure
 
@@ -238,7 +242,7 @@ Each vector contains 33 values with the following meanings:
 
 #### 4. Command Type List
 
-There are 27 command types in total (indices 0-26):
+There are 27 command types in total (indices from 0 to 26, total of 27 commands):
 
 ##### Sketch Commands (0-4)
 - **0: Line** - Straight line
@@ -278,7 +282,7 @@ There are 27 command types in total (indices 0-26):
 - **15: Mirror** - Mirror
   - Uses parameters: None
 - **16: Hole** - Hole
-  - Uses parameters: x(1), y(2), plane params(6-11), hole_r(26), hole_depth(27), hole_type(28)
+  - Uses parameters: x(1), y(2), plane params(6-11) [6 coordinate system parameters], hole_r(26), hole_depth(27), hole_type(28)
 
 ##### Auxiliary Commands (17-26)
 - **17: Topo** - Topology marker
