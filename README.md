@@ -10,7 +10,9 @@ A gallery of WHUCAD dataset is shown above.
 
 ![image](https://github.com/fazhihe/WHUCAD/blob/main/A%20gallery%20of%20WHUCAD.png)
 
-The vector format of WHUCAD is in the folder of ./data/vec . 
+The vector format of WHUCAD is in the folder of ./data/vec . For a detailed explanation of the vector format and the meaning of each position in the CAD part vector, please see the [Vector Format Explanation](docs/VECTOR_FORMAT_EXPLANATION.md).
+
+For visualizing CAD models from h5 files using pyOCC, see the [Visualization Guide](docs/VISUALIZATION_GUIDE.md).
 
 The link to download Mesh format of WHUCAD is https://gitee.com/fred926/whucad-mesh. 
 
