@@ -163,8 +163,8 @@ class CADBuilder:
                 break
             sketch_end += 1
         
-        # Extract sketch vectors
-        sketch_vec = cad_vec[sketch_start + 1:sketch_end]
+        # Extract sketch vectors (include SOL marker)
+        sketch_vec = cad_vec[sketch_start:sketch_end]
         
         # Build sketch profile
         try:
@@ -243,7 +243,8 @@ class CADBuilder:
                 break
             sketch_end += 1
         
-        sketch_vec = cad_vec[sketch_start + 1:sketch_end]
+        # Extract sketch vectors (include SOL marker)
+        sketch_vec = cad_vec[sketch_start:sketch_end]
         
         try:
             profile = Profile.from_vector(

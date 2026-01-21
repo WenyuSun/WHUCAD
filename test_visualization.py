@@ -86,7 +86,7 @@ def test_h5_file(h5_path):
                                 break
                             sketch_end += 1
                         
-                        sketch_vec = cad_vec[sketch_start + 1:sketch_end]
+                        sketch_vec = cad_vec[sketch_start:sketch_end]
                         
                         # Build profile
                         profile = Profile.from_vector(
@@ -125,7 +125,7 @@ def test_h5_file(h5_path):
                                 break
                             sketch_end += 1
                         
-                        sketch_vec = cad_vec[sketch_start + 1:sketch_end]
+                        sketch_vec = cad_vec[sketch_start:sketch_end]
                         
                         profile = Profile.from_vector(
                             np.vstack([sketch_vec, EOS_VEC[np.newaxis]]),
