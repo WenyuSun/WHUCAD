@@ -137,7 +137,8 @@ class CADBuilder:
                 fuse = BRepAlgoAPI_Fuse(result_shape, shape)
                 if fuse.IsDone():
                     result_shape = fuse.Shape()
-            except:
+            except Exception:
+                # If fusion fails, keep the previous shape
                 pass
         
         return result_shape
@@ -250,7 +251,7 @@ class CADBuilder:
                 is_numerical=True
             )
             profile.denumericalize(self.n)
-        except:
+        except Exception:
             return None
         
         wire = self._build_wire_from_profile(profile)
@@ -289,12 +290,17 @@ class CADBuilder:
         return None
     
     def _build_pocket(self, cad_vec, pocket_idx):
-        """Build pocket (negative extrusion)"""
-        # Similar to extrusion but subtracts
+        """Build pocket (negative extrusion) - subtracts material"""
+        # Pocket is similar to extrusion but with boolean subtraction
+        # For initial implementation, we build as extrusion
+        # TODO: Implement proper boolean subtraction when base solid is available
         return self._build_extrusion(cad_vec, pocket_idx)
     
     def _build_groove(self, cad_vec, groove_idx):
-        """Build groove (negative revolution)"""
+        """Build groove (negative revolution) - subtracts material"""
+        # Groove is similar to revolution but with boolean subtraction
+        # For initial implementation, we build as revolution
+        # TODO: Implement proper boolean subtraction when base solid is available
         return self._build_revolution(cad_vec, groove_idx)
     
     def _build_wire_from_profile(self, profile):
